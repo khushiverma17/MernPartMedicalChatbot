@@ -1,42 +1,87 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+
+
+.topbar {
+  border-bottom: 1px solid #E8EEE4;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.topbar .row {
+  align-items: center;
+  min-height: 36px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.topbar .site-info a {
+  display: inline-flex;
+  align-items: center;
+  color: #A1AAA7;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.topbar .site-info a:hover {
+  text-decoration: none;
 }
 
-.card {
-  padding: 2em;
+.topbar .site-info a span {
+  font-size: 16px;
+  margin-right: 6px;
 }
 
-.read-the-docs {
-  color: #888;
+.topbar .site-info .divider {
+  margin-left: 8px;
+  margin-right: 8px;
+  color: #BEC8B8;
+}
+.topbar .social-mini-button{
+  display: inline-block;
+  color: #A1AAA7;
+}
+.topbar .social-mini-button :hover {
+  text-decoration: none;
+  color: #6E807A;
+}
+
+.navbar .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: transparent;
+}
+.active{
+  color: blue;
+}
+/* hero section page */
+
+
+
+
+
+
+
+/* footer section */
+.page-footer {
+  position: relative;
+  display: block;
+  padding-top: 80px;
+  padding-bottom: 16px;
+  background-color: #2D3B38;
+  color: #fff;
+}
+
+.page-footer h5 {
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.page-footer hr {
+  border-color: #4F5E5B;
+}
+
+.footer-menu {
+  position: relative;
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-menu li  a{
+  text-decoration: none;
+  color: grey;
+  font-size: medium;
 }
