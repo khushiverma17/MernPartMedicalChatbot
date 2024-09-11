@@ -110,7 +110,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/News" className="nav-link">
+                  <Link to="/news" className="nav-link">
                     News
                   </Link>
                 </li>
@@ -120,7 +120,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="btn btn-primary ml-lg-3" href="#">
+                  <Link className="btn btn-primary ml-lg-3" to="/login">
                     Login / Register
                   </Link>
                 </li>

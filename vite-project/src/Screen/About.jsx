@@ -5,6 +5,8 @@ import Navbar from "../components/Navbar";
 import doctor1 from "../assets/images/doctors/doctor_1.jpg";
 import doctor2 from "../assets/images/doctors/doctor_2.jpg";
 import doctor3 from "../assets/images/doctors/doctor_3.jpg";
+import Services from "../components/Services";
+import Footer from "../components/Footer";
 const About = () => {
   const doctors = [doctor1, doctor2, doctor3];
   const name = ["Dr. Stein Albert", "Dr. Alexa Melvin", "Dr. Rebecca Steffany"];
@@ -13,6 +15,7 @@ const About = () => {
     <>
       <Navbar />
       <Hero para="Home/About" title="AboutUs" />
+      <Services />
       <div className="page-section">
         <div className="container mt-5">
           <div className="row justify-content-center">
@@ -61,6 +64,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
