@@ -36,20 +36,18 @@ router.post("/Login", async (req, res) => {
         status: false,
       });
     }
-
-    // const token = jwt.sign(
-    //   { id: existingUser._id }, // Payload (user ID)
-    //   process.env.JWT_SECRET, // Secret key from environment variable
-    //   { expiresIn: "1h" } // Token expiration
-    // );
-
+    const token = jwt.sign(
+      { id: existingUser._id }, // Payload (user ID)
+      process.env.JWT_SECRET, // Secret key from environment variable
+    );
+    
     res.status(200).json({
       message: "Login successful",
       status: true,
-      // token,
       user: {
         id: existingUser._id,
         email: existingUser.email,
+        jsontoken:token
       },
     });
   } catch (error) {

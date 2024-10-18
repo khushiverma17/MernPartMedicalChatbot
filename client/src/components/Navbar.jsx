@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaFacebookSquare,
   FaInstagramSquare,
   FaTwitter,
   FaPhoneAlt,
 } from "react-icons/fa";
+import { RiAccountCircleLine } from "react-icons/ri";
 import { IoMail } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+  const [token, settoken] = useState("");
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.jsontoken) {
+      settoken(user.jsontoken);
+    }
+  }, [token]);
+
+  const handlelogout = () => {
+    localStorage.removeItem("user");
+    settoken("");
+    Navigate("/");
+  };
   return (
     <>
       <header>
@@ -104,25 +119,52 @@ const Navbar = () => {
                     AboutUs
                   </Link>
                 </li>
-                <li>
-                  <Link to="/doctors" className="nav-link">
-                    Doctors
-                  </Link>
-                </li>
                 <li className="nav-item">
-                  <Link to="/news" className="nav-link">
-                    News
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/contact" className="nav-link">
-                    Contact
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="btn btn-primary ml-lg-3" to="/login">
-                    Login / Register
-                  </Link>
+                  {token != "" ? (
+                    <>
+                      <ul className="navbar-nav ms-auto">
+                        <li className="nav-item">
+                          <Link to="/news" className="nav-link">
+                            News
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link to="/contact" className="nav-link">
+                            Contact
+                          </Link>
+                        </li>
+                        <li>
+                          <div class="dropdown">
+                            <button
+                              style={{ border: "none",background:"none" }}
+                              type="button"
+                              className="fs-4"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              <RiAccountCircleLine />
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li>
+                                <Link
+                                  style={{ textdecoration: "none" ,color:"black"}}
+                                  onClick={handlelogout}
+                                   
+                                >
+                                  Log out
+                                </Link>
+                              </li>
+                            </ul>
+                          </div>
+                          {/*  */}
+                        </li>
+                      </ul>
+                    </>
+                  ) : (
+                    <Link className="btn btn-primary ml-lg-3" to="/login">
+                      Login / Register
+                    </Link>
+                  )}
                 </li>
               </ul>
             </div>

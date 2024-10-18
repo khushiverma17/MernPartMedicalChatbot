@@ -22,9 +22,14 @@ const SignUp = () => {
         confirmPassword:confirmPassword
       }
     const res=  await axios.post("http://localhost:5000/api/SignUp",payload);
+    console.log(res);
      if(res.status===200){
       console.log("Sign-up successful!", res.data);
       alert("Sign-up successful!");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+
      }
       else{
       console.log("Something went wrong:", res.data);

@@ -1,14 +1,40 @@
 import React, { useState } from "react";
 import "../modules/login.css";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e) => {
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Handle login logic (e.g., authenticate user, call API)
+
+    console.log("email: ", email, "password: ", password);
+    try {
+      const payload = {
+        email: email,
+        password: password,
+      };
+
+      const res = await axios.post("http://localhost:5000/api/Login", payload);
+
+      if (res.status === 200) {
+        console.log(res);
+        alert("Login successfully");
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        navigate("/");
+      } else {
+        console.log("Something went wrong: ", res.data);
+        alert("Login failed");
+      }
+    } catch (error) {
+      console.log("Error is : ", error);
+    }
+
     console.log("Email:", email, "Password:", password);
   };
 
