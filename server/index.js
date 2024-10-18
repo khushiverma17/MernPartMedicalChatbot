@@ -2,7 +2,14 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const connect = require("./database/db");
-
+const cors = require("cors");
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Replace with your client's origin
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 // Middleware to parse JSON
 app.use(express.json());
 

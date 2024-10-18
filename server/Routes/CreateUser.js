@@ -4,10 +4,11 @@ const bcryptjs = require("bcryptjs")
 const router = express.Router();
 router.post("/SignUp", async (req, res) => {
   try {
-    console.log("sign the request");
+    console.log("sign in the request");
     const { email, password, confirmPassword } = req.body;
 
     if (!email) {
+      console.log("emal error");
       return res.status(400).json({
         message: "Email is required",
         status: false,
@@ -15,6 +16,7 @@ router.post("/SignUp", async (req, res) => {
     }
 
     if (!password || !confirmPassword) {
+      console.log("password error");
       return res.status(400).json({
         message: "password and confirm password are required",
         status: false,
@@ -22,6 +24,7 @@ router.post("/SignUp", async (req, res) => {
     }
 
     if (password != confirmPassword) {
+      console.log("password error");
       return res.status(400).json({
         message: "Password did not match confirmPassword",
         status: false,
